@@ -3,223 +3,333 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nguyễn Minh Hiếu | nmhai.indevs.in</title>
-  <meta name="description" content="Website cá nhân của Nguyễn Minh Hiếu – giới thiệu bản thân và các dự án." />
+  <title>Nguyễn Minh Hiếu | Portfolio</title>
+  <meta name="description" content="Portfolio của Nguyễn Minh Hiếu – dự án, kỹ năng và liên hệ." />
 
   <style>
     :root{
       --bg:#0b1020;
-      --card:rgba(255,255,255,.08);
-      --text:rgba(255,255,255,.95);
-      --muted:rgba(255,255,255,.7);
+      --card:rgba(255,255,255,.06);
+      --text:rgba(255,255,255,.94);
+      --muted:rgba(255,255,255,.70);
       --line:rgba(255,255,255,.14);
-      --accent:#7c3aed;
-      --accent2:#22c55e;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --shadow:0 18px 60px rgba(0,0,0,.35);
       --radius:18px;
+      --accent:#7c3aed;
+      --accent2:#38bdf8;
+      --good:#22c55e;
+      --warn:#f59e0b;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 20% 10%, rgba(124,58,237,.35), transparent 60%),
-        radial-gradient(900px 500px at 85% 35%, rgba(34,197,94,.25), transparent 60%),
-        radial-gradient(700px 450px at 30% 95%, rgba(56,189,248,.18), transparent 60%),
+        radial-gradient(900px 540px at 20% 10%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 540px at 85% 35%, rgba(56,189,248,.25), transparent 60%),
+        radial-gradient(700px 450px at 30% 95%, rgba(34,197,94,.18), transparent 60%),
         var(--bg);
       min-height:100vh;
       line-height:1.6;
     }
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 56px}
+    .wrap{max-width:1100px;margin:0 auto;padding:26px 16px 56px}
 
     /* NAV */
     .nav{
-      display:flex;justify-content:space-between;align-items:center;
-      padding:14px 18px;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 16px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.05);
       border-radius:999px;
-      backdrop-filter:blur(10px);
+      backdrop-filter: blur(10px);
     }
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
     .dot{
       width:10px;height:10px;border-radius:50%;
-      background:linear-gradient(135deg,var(--accent),#38bdf8);
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
       box-shadow:0 0 0 6px rgba(124,58,237,.18);
     }
-    .menu{display:flex;gap:14px;font-size:14px;color:var(--muted)}
-    .menu a{padding:8px 12px;border-radius:12px}
-    .menu a:hover{background:rgba(255,255,255,.08);color:#fff}
+    .menu{display:flex;gap:10px;flex-wrap:wrap}
+    .menu a{
+      font-size:13px;color:var(--muted);
+      padding:8px 10px;border-radius:12px;
+    }
+    .menu a:hover{background:rgba(255,255,255,.08);color:var(--text)}
 
     /* HERO */
     .hero{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:1.3fr .7fr;
-      gap:16px;
+      margin-top:18px;
+      display:grid;grid-template-columns:1.25fr .75fr;
+      gap:14px;
+      align-items:stretch;
     }
     @media(max-width:900px){.hero{grid-template-columns:1fr}}
     .card{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
+      background:var(--card);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
+      overflow:hidden;
     }
-    .heroMain{padding:30px}
+    .heroMain{padding:26px}
     .badge{
       display:inline-flex;align-items:center;gap:8px;
-      padding:8px 14px;
-      border-radius:999px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.05);
       color:var(--muted);
+      border-radius:999px;
+      padding:8px 12px;
       font-size:13px;
     }
     .spark{
       width:8px;height:8px;border-radius:50%;
-      background:var(--accent2);
-      box-shadow:0 0 0 6px rgba(34,197,94,.15);
+      background:var(--good);
+      box-shadow:0 0 0 6px rgba(34,197,94,.14);
     }
-    h1{margin:16px 0 10px;font-size:44px;line-height:1.1}
+    h1{margin:14px 0 10px;font-size:44px;line-height:1.08}
     @media(max-width:520px){h1{font-size:36px}}
-    .lead{color:var(--muted);font-size:16px;max-width:720px}
-
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .lead{margin:0;color:var(--muted);max-width:720px}
+    .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
     .btn{
-      padding:12px 16px;
-      border-radius:14px;
+      display:inline-flex;align-items:center;gap:10px;
+      padding:12px 14px;border-radius:14px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.06);
-      font-weight:600;font-size:14px;
+      font-weight:700;font-size:14px;
       transition:.15s;
     }
-    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.1)}
-    .btnPrimary{
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
+    .primary{
       border:none;
-      background:linear-gradient(135deg,var(--accent),#38bdf8);
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
     }
-
-    /* INFO BOX */
-    .miniGrid{padding:18px;display:grid;gap:12px}
+    .sub{
+      padding:18px;
+      display:grid;gap:12px;
+    }
     .mini{
       border:1px solid var(--line);
       border-radius:16px;
-      padding:14px;
       background:rgba(255,255,255,.05);
+      padding:14px;
     }
     .mini h3{margin:0 0 6px;font-size:14px}
-    .mini p{margin:0;font-size:13px;color:var(--muted)}
+    .mini p{margin:0;color:var(--muted);font-size:13px}
 
     /* SECTIONS */
-    .section{margin-top:26px}
-    .sectionTitle{
-      display:flex;justify-content:space-between;
-      margin:18px 2px 12px;
-      font-size:14px;color:var(--muted);
+    .section{margin-top:18px}
+    .sectionHead{
+      display:flex;align-items:end;justify-content:space-between;
+      margin:18px 2px 10px;
     }
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:600px){.grid{grid-template-columns:1fr}}
-    .proj{
-      padding:18px;
-      border-radius:18px;
+    .sectionHead h2{margin:0;font-size:18px}
+    .hint{color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.grid{grid-template-columns:1fr}}
+    .box{
+      padding:16px;border-radius:18px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.05);
       transition:.15s;
     }
-    .proj:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
+    .box:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
+    .muted{color:var(--muted)}
     .tagRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .tag{
       font-size:12px;color:var(--muted);
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
+      padding:6px 10px;border-radius:999px;
+      border:1px solid var(--line);background:rgba(255,255,255,.04);
     }
 
-    /* FOOTER */
+    /* timeline */
+    .timeline{display:grid;gap:10px}
+    .tItem{
+      display:flex;gap:12px;align-items:flex-start;
+      padding:14px;border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+    }
+    .pill{
+      flex:0 0 auto;
+      font-size:12px;
+      color:rgba(255,255,255,.8);
+      padding:6px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      margin-top:2px;
+    }
+    .tBody h3{margin:0 0 4px;font-size:14px}
+    .tBody p{margin:0;color:var(--muted);font-size:13px}
+
+    /* footer */
     .foot{
-      margin-top:26px;
+      margin-top:22px;
       padding:16px 18px;
       border-radius:18px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.04);
-      display:flex;justify-content:space-between;flex-wrap:wrap;
+      display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
       font-size:13px;color:var(--muted);
     }
+    .k{color:var(--text)}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <!-- NAV -->
     <div class="nav">
       <div class="brand">
         <span class="dot"></span>
-        <span>nmhai.indevs.in</span>
+        <span>Nguyễn Minh Hiếu</span>
       </div>
       <div class="menu">
         <a href="#about">Giới thiệu</a>
+        <a href="#skills">Kỹ năng</a>
         <a href="#projects">Dự án</a>
+        <a href="#timeline">Hành trình</a>
         <a href="#contact">Liên hệ</a>
       </div>
     </div>
 
-    <!-- HERO -->
     <div class="hero">
       <div class="card heroMain">
-        <div class="badge"><span class="spark"></span> Website cá nhân trên Cloudflare Pages</div>
+        <div class="badge"><span class="spark"></span> Portfolio chạy tại <span class="mono">nmhai.indevs.in</span></div>
         <h1>Xin chào 👋<br/>Mình là <span style="color:#a78bfa">Nguyễn Minh Hiếu</span></h1>
         <p class="lead">
-          Đây là website cá nhân của mình, dùng để giới thiệu bản thân và các dự án đang thực hiện.
-          Mình yêu thích công nghệ, học hỏi cái mới và xây dựng những sản phẩm hữu ích.
+          Mình xây dựng website này để giới thiệu bản thân, kỹ năng và các dự án. Bạn có thể dùng nó như CV online
+          hoặc landing page cho sản phẩm/ý tưởng.
         </p>
+
         <div class="cta">
-          <a class="btn btnPrimary" href="#projects">Xem dự án</a>
+          <a class="btn primary" href="#projects">Xem dự án</a>
           <a class="btn" href="#contact">Liên hệ</a>
+          <a class="btn" href="mailto:hieumanucianvbhp2003@gmail.com">Gửi email</a>
         </div>
       </div>
 
-      <div class="card miniGrid">
+      <div class="card sub">
         <div class="mini">
-          <h3>⚡ Nhanh & ổn định</h3>
-          <p>Deploy tự động từ GitHub, CDN toàn cầu Cloudflare.</p>
+          <h3>⚡ Nhanh & miễn phí</h3>
+          <p>Deploy tự động từ GitHub → Cloudflare Pages. Không cần server.</p>
         </div>
         <div class="mini">
           <h3>🔒 HTTPS sẵn</h3>
-          <p>SSL tự động, bảo mật và an toàn.</p>
+          <p>SSL tự cấp, truy cập an toàn. Phù hợp làm portfolio / landing page.</p>
         </div>
         <div class="mini">
           <h3>🧩 Dễ mở rộng</h3>
-          <p>Có thể nâng cấp lên blog, React hoặc web app.</p>
+          <p>Thêm trang mới, blog, dashboard (Looker Studio) hoặc nâng cấp lên web app.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="section" id="about">
+      <div class="sectionHead">
+        <h2>Giới thiệu</h2>
+        <div class="hint">Bạn có thể sửa đoạn này trong file HTML</div>
+      </div>
+      <div class="box">
+        <p style="margin:0">
+          Mình là <span class="k">Nguyễn Minh Hiếu</span>. Mình quan tâm đến công nghệ, xây dựng sản phẩm,
+          và thích học hỏi những thứ mới (AI, web, dữ liệu…). Website này là nơi mình tổng hợp dự án,
+          bài viết và các thông tin liên hệ.
+        </p>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section" id="skills">
+      <div class="sectionHead">
+        <h2>Kỹ năng</h2>
+        <div class="hint">Gợi ý: liệt kê những gì bạn mạnh nhất</div>
+      </div>
+
+      <div class="grid">
+        <div class="box">
+          <h3 style="margin:0 0 6px;font-size:15px">Web</h3>
+          <p class="muted" style="margin:0">HTML/CSS cơ bản, triển khai website tĩnh, tối ưu tốc độ.</p>
+          <div class="tagRow">
+            <span class="tag">Cloudflare Pages</span><span class="tag">GitHub</span><span class="tag">Deploy</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 style="margin:0 0 6px;font-size:15px">Dữ liệu</h3>
+          <p class="muted" style="margin:0">Tổng hợp dữ liệu bằng Google Sheets, tạo dashboard.</p>
+          <div class="tagRow">
+            <span class="tag">Looker Studio</span><span class="tag">Sheets</span><span class="tag">Analytics</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 style="margin:0 0 6px;font-size:15px">AI & Công cụ</h3>
+          <p class="muted" style="margin:0">Ứng dụng AI để hỗ trợ công việc và học tập.</p>
+          <div class="tagRow">
+            <span class="tag">Gemini</span><span class="tag">Prompting</span><span class="tag">Automation</span>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- PROJECTS -->
     <div class="section" id="projects">
-      <div class="sectionTitle">
-        <span>📌 Dự án</span>
-        <span>đang cập nhật</span>
+      <div class="sectionHead">
+        <h2>Dự án</h2>
+        <div class="hint">Bạn thay “Dự án #2, #3” bằng dự án thật</div>
       </div>
+
       <div class="grid">
-        <div class="proj">
-          <h3>Website cá nhân</h3>
-          <p>Trang giới thiệu cá nhân, tối ưu tốc độ và trải nghiệm.</p>
+        <div class="box">
+          <h3 style="margin:0 0 6px">Portfolio nmhai.indevs.in</h3>
+          <p class="muted" style="margin:0">Website cá nhân, giao diện hiện đại, deploy tự động.</p>
           <div class="tagRow">
-            <span class="tag">HTML</span>
-            <span class="tag">Cloudflare Pages</span>
-            <span class="tag">GitHub</span>
+            <span class="tag">HTML</span><span class="tag">Cloudflare Pages</span><span class="tag">GitHub</span>
           </div>
         </div>
-        <div class="proj">
-          <h3>Dự án tiếp theo</h3>
-          <p>Bạn có thể mô tả dự án của mình tại đây.</p>
+
+        <div class="box">
+          <h3 style="margin:0 0 6px">Dự án #2</h3>
+          <p class="muted" style="margin:0">Mô tả ngắn dự án (mục tiêu, bạn làm gì, kết quả).</p>
           <div class="tagRow">
-            <span class="tag">Web</span>
-            <span class="tag">AI</span>
-            <span class="tag">Demo</span>
+            <span class="tag">AI</span><span class="tag">Web</span><span class="tag">Demo</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 style="margin:0 0 6px">Dự án #3</h3>
+          <p class="muted" style="margin:0">Mô tả ngắn dự án (mục tiêu, bạn làm gì, kết quả).</p>
+          <div class="tagRow">
+            <span class="tag">Tool</span><span class="tag">Data</span><span class="tag">Docs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="section" id="timeline">
+      <div class="sectionHead">
+        <h2>Hành trình</h2>
+        <div class="hint">Thêm mốc học tập / dự án / thành tích</div>
+      </div>
+
+      <div class="timeline">
+        <div class="tItem">
+          <div class="pill">2026</div>
+          <div class="tBody">
+            <h3>Ra mắt website cá nhân</h3>
+            <p>Thiết lập domain, GitHub, Cloudflare Pages và hoàn thiện giao diện portfolio.</p>
+          </div>
+        </div>
+        <div class="tItem">
+          <div class="pill">2025</div>
+          <div class="tBody">
+            <h3>Học & làm dự án</h3>
+            <p>Thêm nội dung về dự án, kỹ năng, dashboard hoặc bài viết.</p>
           </div>
         </div>
       </div>
@@ -227,35 +337,35 @@
 
     <!-- CONTACT -->
     <div class="section" id="contact">
-      <div class="sectionTitle">
-        <span>📮 Liên hệ</span>
-        <span>kết nối</span>
+      <div class="sectionHead">
+        <h2>Liên hệ</h2>
+        <div class="hint">Bạn có thể thêm GitHub/Facebook/Zalo</div>
       </div>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="proj">
-          <h3>Email</h3>
-          <p>
-            <a href="mailto:hieumanucianvbhp2003@gmail.com">
-              hieumanucianvbhp2003@gmail.com
-            </a>
+
+      <div class="grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="box">
+          <h3 style="margin:0 0 6px">Email</h3>
+          <p class="muted" style="margin:0">
+            <a class="k" href="mailto:hieumanucianvbhp2003@gmail.com">hieumanucianvbhp2003@gmail.com</a>
           </p>
         </div>
-        <div class="proj">
-          <h3>Ghi chú</h3>
-          <p>Bạn có thể thêm link GitHub, Facebook hoặc Zalo tại đây.</p>
+        <div class="box">
+          <h3 style="margin:0 0 6px">Gợi ý</h3>
+          <p class="muted" style="margin:0">
+            Bạn có thể thêm nút “Xem GitHub” hoặc “Tải CV (PDF)” ở đây.
+          </p>
         </div>
       </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="foot">
-      <div>© <span id="year"></span> Nguyễn Minh Hiếu</div>
-      <div>Deploy bằng Cloudflare Pages</div>
+      <div>© <span id="y"></span> <span class="k">Nguyễn Minh Hiếu</span></div>
+      <div>Deploy tự động: GitHub → Cloudflare Pages</div>
     </div>
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
