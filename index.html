@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nguyễn Minh Hiếu | Portfolio</title>
-  <meta name="description" content="Portfolio của Nguyễn Minh Hiếu – dự án, kỹ năng và liên hệ." />
+  <title>Nguyễn Minh Hiếu | Albums</title>
+  <meta name="description" content="Album showcase của Nguyễn Minh Hiếu – concept, mood, tracklist và link nghe." />
 
   <style>
     :root{
       --bg:#0b1020;
-      --card:rgba(255,255,255,.06);
-      --text:rgba(255,255,255,.94);
-      --muted:rgba(255,255,255,.70);
-      --line:rgba(255,255,255,.14);
-      --shadow:0 18px 60px rgba(0,0,0,.35);
-      --radius:18px;
+      --card: rgba(255,255,255,.06);
+      --text: rgba(255,255,255,.94);
+      --muted: rgba(255,255,255,.70);
+      --line: rgba(255,255,255,.14);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 18px;
       --accent:#7c3aed;
       --accent2:#38bdf8;
       --good:#22c55e;
-      --warn:#f59e0b;
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
@@ -30,50 +30,55 @@
         radial-gradient(900px 540px at 85% 35%, rgba(56,189,248,.25), transparent 60%),
         radial-gradient(700px 450px at 30% 95%, rgba(34,197,94,.18), transparent 60%),
         var(--bg);
-      min-height:100vh;
       line-height:1.6;
     }
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:26px 16px 56px}
+    .wrap{max-width:1120px;margin:0 auto;padding:24px 16px 56px}
 
     /* NAV */
     .nav{
       display:flex;align-items:center;justify-content:space-between;
-      padding:14px 16px;
+      padding:14px 16px;border-radius:999px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.05);
-      border-radius:999px;
       backdrop-filter: blur(10px);
+      gap:12px;
     }
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px; white-space:nowrap}
     .dot{
       width:10px;height:10px;border-radius:50%;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
       box-shadow:0 0 0 6px rgba(124,58,237,.18);
     }
-    .menu{display:flex;gap:10px;flex-wrap:wrap}
+    .menu{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
     .menu a{
       font-size:13px;color:var(--muted);
       padding:8px 10px;border-radius:12px;
     }
     .menu a:hover{background:rgba(255,255,255,.08);color:var(--text)}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;}
 
     /* HERO */
     .hero{
-      margin-top:18px;
-      display:grid;grid-template-columns:1.25fr .75fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    @media(max-width:900px){.hero{grid-template-columns:1fr}}
-    .card{
+      margin-top:16px;
       border:1px solid var(--line);
-      background:var(--card);
+      background:rgba(255,255,255,.06);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
+      padding:22px;
       overflow:hidden;
+      position:relative;
     }
-    .heroMain{padding:26px}
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(700px 320px at 30% 0%, rgba(124,58,237,.35), transparent 60%),
+                  radial-gradient(700px 320px at 85% 30%, rgba(56,189,248,.22), transparent 60%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .heroInner{position:relative; display:grid; grid-template-columns: 1.1fr .9fr; gap:14px}
+    @media(max-width:900px){.heroInner{grid-template-columns:1fr}}
     .badge{
       display:inline-flex;align-items:center;gap:8px;
       border:1px solid var(--line);
@@ -82,290 +87,617 @@
       border-radius:999px;
       padding:8px 12px;
       font-size:13px;
+      width:max-content;
     }
     .spark{
       width:8px;height:8px;border-radius:50%;
       background:var(--good);
       box-shadow:0 0 0 6px rgba(34,197,94,.14);
     }
-    h1{margin:14px 0 10px;font-size:44px;line-height:1.08}
-    @media(max-width:520px){h1{font-size:36px}}
+    h1{margin:12px 0 8px;font-size:40px;line-height:1.1}
+    @media(max-width:520px){h1{font-size:34px}}
     .lead{margin:0;color:var(--muted);max-width:720px}
-    .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:12px 14px;border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
-      font-weight:700;font-size:14px;
-      transition:.15s;
+
+    .heroCards{
+      display:grid; gap:10px;
+      grid-template-columns: repeat(2, 1fr);
+      align-content:start;
     }
-    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.10)}
-    .primary{
-      border:none;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-    }
-    .sub{
-      padding:18px;
-      display:grid;gap:12px;
-    }
+    @media(max-width:520px){.heroCards{grid-template-columns:1fr}}
     .mini{
       border:1px solid var(--line);
-      border-radius:16px;
       background:rgba(255,255,255,.05);
+      border-radius:16px;
       padding:14px;
     }
     .mini h3{margin:0 0 6px;font-size:14px}
     .mini p{margin:0;color:var(--muted);font-size:13px}
 
-    /* SECTIONS */
-    .section{margin-top:18px}
+    /* TOOLBAR */
+    .toolbar{
+      margin-top:14px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .search{
+      flex:1 1 260px;
+      display:flex;align-items:center;gap:10px;
+      padding:12px 14px;border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+    }
+    .search input{
+      width:100%;
+      border:none; outline:none;
+      background:transparent;
+      color:var(--text);
+      font-size:14px;
+    }
+    .pillRow{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{
+      cursor:pointer;
+      font-size:12px;color:var(--muted);
+      padding:8px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      user-select:none;
+      transition:.12s;
+    }
+    .pill:hover{background:rgba(255,255,255,.08);color:var(--text)}
+    .pill.active{
+      color:#0b1020;
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(124,58,237,1), rgba(56,189,248,.95));
+    }
+
+    /* ALBUM GRID */
     .sectionHead{
       display:flex;align-items:end;justify-content:space-between;
       margin:18px 2px 10px;
+      gap:12px;
     }
     .sectionHead h2{margin:0;font-size:18px}
     .hint{color:var(--muted);font-size:13px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
     @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:620px){.grid{grid-template-columns:1fr}}
-    .box{
-      padding:16px;border-radius:18px;
+    .album{
       border:1px solid var(--line);
       background:rgba(255,255,255,.05);
-      transition:.15s;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+      transition: transform .12s ease, background .12s ease;
+      cursor:pointer;
+      min-height: 270px;
+      display:flex;flex-direction:column;
     }
-    .box:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
-    .muted{color:var(--muted)}
-    .tagRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .album:hover{transform: translateY(-2px); background:rgba(255,255,255,.08)}
+    .cover{
+      height:140px;
+      background:
+        radial-gradient(500px 220px at 30% 20%, rgba(124,58,237,.45), transparent 60%),
+        radial-gradient(500px 220px at 85% 30%, rgba(56,189,248,.35), transparent 60%),
+        rgba(255,255,255,.04);
+      position:relative;
+    }
+    .cover .label{
+      position:absolute; left:12px; top:12px;
+      display:inline-flex; gap:8px; align-items:center;
+      font-size:12px; color:rgba(255,255,255,.9);
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.20);
+      backdrop-filter: blur(8px);
+    }
+    .cover .year{
+      position:absolute; right:12px; top:12px;
+      font-size:12px;color:rgba(255,255,255,.85);
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.18);
+      backdrop-filter: blur(8px);
+    }
+    .body{padding:14px; display:grid; gap:8px}
+    .title{margin:0;font-size:16px;line-height:1.25}
+    .desc{margin:0;color:var(--muted);font-size:13px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
     .tag{
       font-size:12px;color:var(--muted);
       padding:6px 10px;border-radius:999px;
-      border:1px solid var(--line);background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    .meta{
+      margin-top:auto;
+      padding:12px 14px;
+      border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;align-items:center;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .ctaMini{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:800;
     }
 
-    /* timeline */
-    .timeline{display:grid;gap:10px}
-    .tItem{
-      display:flex;gap:12px;align-items:flex-start;
-      padding:14px;border-radius:18px;
+    /* MODAL */
+    .backdrop{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none; align-items:center; justify-content:center;
+      padding:18px;
+      z-index:50;
+    }
+    .backdrop.show{display:flex}
+    .modal{
+      width:min(920px, 100%);
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(14, 18, 35, .92);
+      border-radius:22px;
+      box-shadow: 0 28px 90px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .modalTop{
+      padding:16px 18px;
+      border-bottom:1px solid rgba(255,255,255,.14);
+      display:flex;justify-content:space-between;gap:10px;align-items:center;
+    }
+    .modalTop .x{
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius:12px;
+      padding:8px 10px;
+      font-weight:900;
+    }
+    .modalGrid{
+      display:grid; grid-template-columns: .9fr 1.1fr;
+      gap:0;
+    }
+    @media(max-width:860px){.modalGrid{grid-template-columns:1fr}}
+    .modalCover{
+      padding:18px;
+      border-right:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(700px 360px at 30% 20%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(700px 360px at 85% 30%, rgba(56,189,248,.25), transparent 60%);
+    }
+    @media(max-width:860px){.modalCover{border-right:none;border-bottom:1px solid rgba(255,255,255,.12)}}
+    .modalCoverBox{
+      height:220px;border-radius:18px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      position:relative;
+      overflow:hidden;
+      display:flex;align-items:flex-end;
+      padding:14px;
+    }
+    .pill2{
+      font-size:12px; color: rgba(255,255,255,.9);
+      padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.18);
+      backdrop-filter: blur(8px);
+      margin-right:8px;
+      display:inline-flex;
+      margin-bottom:8px;
+    }
+    .modalInfo{
+      padding:18px;
+      display:grid; gap:10px;
+    }
+    .modalInfo h3{margin:0;font-size:22px;line-height:1.2}
+    .sub{color:var(--muted);font-size:13px}
+    .links{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 12px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      font-weight:900;font-size:13px;
+    }
+    .btn.primary{
+      border:none;
+      background:linear-gradient(135deg, rgba(124,58,237,1), rgba(56,189,248,.95));
+      color:#0b1020;
+    }
+    .trackbox{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:16px;
+      background: rgba(255,255,255,.04);
+      padding:12px;
+    }
+    .trackbox h4{margin:0 0 8px;font-size:14px}
+    .trackbox ol{margin:0;padding-left:18px;color:var(--muted);font-size:13px}
+
+    .contact{
+      margin-top:18px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.05);
-    }
-    .pill{
-      flex:0 0 auto;
-      font-size:12px;
-      color:rgba(255,255,255,.8);
-      padding:6px 10px;border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      margin-top:2px;
-    }
-    .tBody h3{margin:0 0 4px;font-size:14px}
-    .tBody p{margin:0;color:var(--muted);font-size:13px}
-
-    /* footer */
-    .foot{
-      margin-top:22px;
-      padding:16px 18px;
       border-radius:18px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
+      padding:16px 18px;
       display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
-      font-size:13px;color:var(--muted);
+      color:var(--muted);font-size:13px;
     }
     .k{color:var(--text)}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <div class="nav">
-      <div class="brand">
-        <span class="dot"></span>
-        <span>Nguyễn Minh Hiếu</span>
-      </div>
+      <div class="brand"><span class="dot"></span><span>Nguyễn Minh Hiếu • Albums</span></div>
       <div class="menu">
-        <a href="#about">Giới thiệu</a>
-        <a href="#skills">Kỹ năng</a>
-        <a href="#projects">Dự án</a>
-        <a href="#timeline">Hành trình</a>
+        <a href="#albums">Albums</a>
         <a href="#contact">Liên hệ</a>
+        <a class="mono" href="https://nmhai.indevs.in">nmhai.indevs.in</a>
       </div>
     </div>
 
     <div class="hero">
-      <div class="card heroMain">
-        <div class="badge"><span class="spark"></span> Portfolio chạy tại <span class="mono">nmhai.indevs.in</span></div>
-        <h1>Xin chào 👋<br/>Mình là <span style="color:#a78bfa">Nguyễn Minh Hiếu</span></h1>
-        <p class="lead">
-          Mình xây dựng website này để giới thiệu bản thân, kỹ năng và các dự án. Bạn có thể dùng nó như CV online
-          hoặc landing page cho sản phẩm/ý tưởng.
-        </p>
-
-        <div class="cta">
-          <a class="btn primary" href="#projects">Xem dự án</a>
-          <a class="btn" href="#contact">Liên hệ</a>
-          <a class="btn" href="mailto:hieumanucianvbhp2003@gmail.com">Gửi email</a>
-        </div>
-      </div>
-
-      <div class="card sub">
-        <div class="mini">
-          <h3>⚡ Nhanh & miễn phí</h3>
-          <p>Deploy tự động từ GitHub → Cloudflare Pages. Không cần server.</p>
-        </div>
-        <div class="mini">
-          <h3>🔒 HTTPS sẵn</h3>
-          <p>SSL tự cấp, truy cập an toàn. Phù hợp làm portfolio / landing page.</p>
-        </div>
-        <div class="mini">
-          <h3>🧩 Dễ mở rộng</h3>
-          <p>Thêm trang mới, blog, dashboard (Looker Studio) hoặc nâng cấp lên web app.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ABOUT -->
-    <div class="section" id="about">
-      <div class="sectionHead">
-        <h2>Giới thiệu</h2>
-        <div class="hint">Bạn có thể sửa đoạn này trong file HTML</div>
-      </div>
-      <div class="box">
-        <p style="margin:0">
-          Mình là <span class="k">Nguyễn Minh Hiếu</span>. Mình quan tâm đến công nghệ, xây dựng sản phẩm,
-          và thích học hỏi những thứ mới (AI, web, dữ liệu…). Website này là nơi mình tổng hợp dự án,
-          bài viết và các thông tin liên hệ.
-        </p>
-      </div>
-    </div>
-
-    <!-- SKILLS -->
-    <div class="section" id="skills">
-      <div class="sectionHead">
-        <h2>Kỹ năng</h2>
-        <div class="hint">Gợi ý: liệt kê những gì bạn mạnh nhất</div>
-      </div>
-
-      <div class="grid">
-        <div class="box">
-          <h3 style="margin:0 0 6px;font-size:15px">Web</h3>
-          <p class="muted" style="margin:0">HTML/CSS cơ bản, triển khai website tĩnh, tối ưu tốc độ.</p>
-          <div class="tagRow">
-            <span class="tag">Cloudflare Pages</span><span class="tag">GitHub</span><span class="tag">Deploy</span>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3 style="margin:0 0 6px;font-size:15px">Dữ liệu</h3>
-          <p class="muted" style="margin:0">Tổng hợp dữ liệu bằng Google Sheets, tạo dashboard.</p>
-          <div class="tagRow">
-            <span class="tag">Looker Studio</span><span class="tag">Sheets</span><span class="tag">Analytics</span>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3 style="margin:0 0 6px;font-size:15px">AI & Công cụ</h3>
-          <p class="muted" style="margin:0">Ứng dụng AI để hỗ trợ công việc và học tập.</p>
-          <div class="tagRow">
-            <span class="tag">Gemini</span><span class="tag">Prompting</span><span class="tag">Automation</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECTS -->
-    <div class="section" id="projects">
-      <div class="sectionHead">
-        <h2>Dự án</h2>
-        <div class="hint">Bạn thay “Dự án #2, #3” bằng dự án thật</div>
-      </div>
-
-      <div class="grid">
-        <div class="box">
-          <h3 style="margin:0 0 6px">Portfolio nmhai.indevs.in</h3>
-          <p class="muted" style="margin:0">Website cá nhân, giao diện hiện đại, deploy tự động.</p>
-          <div class="tagRow">
-            <span class="tag">HTML</span><span class="tag">Cloudflare Pages</span><span class="tag">GitHub</span>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3 style="margin:0 0 6px">Dự án #2</h3>
-          <p class="muted" style="margin:0">Mô tả ngắn dự án (mục tiêu, bạn làm gì, kết quả).</p>
-          <div class="tagRow">
-            <span class="tag">AI</span><span class="tag">Web</span><span class="tag">Demo</span>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3 style="margin:0 0 6px">Dự án #3</h3>
-          <p class="muted" style="margin:0">Mô tả ngắn dự án (mục tiêu, bạn làm gì, kết quả).</p>
-          <div class="tagRow">
-            <span class="tag">Tool</span><span class="tag">Data</span><span class="tag">Docs</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TIMELINE -->
-    <div class="section" id="timeline">
-      <div class="sectionHead">
-        <h2>Hành trình</h2>
-        <div class="hint">Thêm mốc học tập / dự án / thành tích</div>
-      </div>
-
-      <div class="timeline">
-        <div class="tItem">
-          <div class="pill">2026</div>
-          <div class="tBody">
-            <h3>Ra mắt website cá nhân</h3>
-            <p>Thiết lập domain, GitHub, Cloudflare Pages và hoàn thiện giao diện portfolio.</p>
-          </div>
-        </div>
-        <div class="tItem">
-          <div class="pill">2025</div>
-          <div class="tBody">
-            <h3>Học & làm dự án</h3>
-            <p>Thêm nội dung về dự án, kỹ năng, dashboard hoặc bài viết.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="section" id="contact">
-      <div class="sectionHead">
-        <h2>Liên hệ</h2>
-        <div class="hint">Bạn có thể thêm GitHub/Facebook/Zalo</div>
-      </div>
-
-      <div class="grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="box">
-          <h3 style="margin:0 0 6px">Email</h3>
-          <p class="muted" style="margin:0">
-            <a class="k" href="mailto:hieumanucianvbhp2003@gmail.com">hieumanucianvbhp2003@gmail.com</a>
+      <div class="heroInner">
+        <div>
+          <div class="badge"><span class="spark"></span> Showcase âm nhạc • click để xem chi tiết & nghe</div>
+          <h1>Album/EP của <span style="color:#a78bfa">Nguyễn Minh Hiếu</span></h1>
+          <p class="lead">
+            Trang này tổng hợp các album/EP/single của mình: concept, mood, tags, tracklist và link nghe.
+            Bạn có thể tìm kiếm theo tên, tag hoặc lọc theo mood.
           </p>
+
+          <div class="toolbar" style="margin-top:14px">
+            <div class="search" title="Tìm theo tên album / tag / năm">
+              🔎 <input id="q" placeholder="Tìm album… (VD: Rời Xa, Ballad, 2026)" />
+            </div>
+            <div class="pillRow" id="filters"></div>
+          </div>
         </div>
-        <div class="box">
-          <h3 style="margin:0 0 6px">Gợi ý</h3>
-          <p class="muted" style="margin:0">
-            Bạn có thể thêm nút “Xem GitHub” hoặc “Tải CV (PDF)” ở đây.
-          </p>
+
+        <div class="heroCards">
+          <div class="mini">
+            <h3>⚡ Nhanh & nhẹ</h3>
+            <p>1 file HTML, chạy trên Cloudflare Pages, tải cực nhanh.</p>
+          </div>
+          <div class="mini">
+            <h3>🎧 Nghe trực tiếp</h3>
+            <p>Album có thể nhúng player SoundCloud/YouTube (tuỳ bạn thêm link).</p>
+          </div>
+          <div class="mini">
+            <h3>🧩 Dễ cập nhật</h3>
+            <p>Chỉ cần sửa mảng <span class="mono">ALBUMS</span> là xong.</p>
+          </div>
+          <div class="mini">
+            <h3>📌 Sẵn sàng mở rộng</h3>
+            <p>Thêm trang lyrics, MV, press-kit, hoặc thống kê.</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="foot">
-      <div>© <span id="y"></span> <span class="k">Nguyễn Minh Hiếu</span></div>
-      <div>Deploy tự động: GitHub → Cloudflare Pages</div>
+    <div class="sectionHead" style="margin-top:18px" id="albums">
+      <h2>Albums / EP / Singles</h2>
+      <div class="hint">Click vào 1 album để xem chi tiết</div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="contact" id="contact">
+      <div>📮 Liên hệ: <a class="k" href="mailto:hieumanucianvbhp2003@gmail.com">hieumanucianvbhp2003@gmail.com</a></div>
+      <div>© <span id="y"></span> <span class="k">Nguyễn Minh Hiếu</span> • <span class="mono">nmhai.indevs.in</span></div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="backdrop" id="backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Album details">
+      <div class="modalTop">
+        <div class="sub">Chi tiết album</div>
+        <button class="x" id="close">✕</button>
+      </div>
+      <div class="modalGrid">
+        <div class="modalCover">
+          <div class="modalCoverBox" id="mCover">
+            <div id="mBadges"></div>
+          </div>
+        </div>
+        <div class="modalInfo">
+          <h3 id="mTitle">—</h3>
+          <div class="sub" id="mSub">—</div>
+          <p class="sub" id="mDesc" style="margin:0; line-height:1.6">—</p>
+
+          <div class="links" id="mLinks"></div>
+
+          <div class="trackbox" id="mTracksWrap">
+            <h4>Tracklist</h4>
+            <ol id="mTracks"></ol>
+          </div>
+
+          <div class="trackbox" id="mPlayerWrap" style="display:none">
+            <h4>Nghe trực tiếp</h4>
+            <div id="mPlayer"></div>
+          </div>
+
+          <div class="sub">Tip: cập nhật album bằng cách sửa dữ liệu trong <span class="mono">ALBUMS</span>.</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
+    // =======================
+    // SỬA THÔNG TIN ALBUM Ở ĐÂY
+    // =======================
+    const ALBUMS = [
+      {
+        title: "EP Rời Xa Em",
+        type: "EP",
+        year: "2026", // sửa nếu khác
+        mood: ["Ballad", "R&B"],
+        tags: ["sad", "vietnamese", "story"],
+        desc: "EP 'Rời Xa Em' – tổng hợp các ca khúc theo concept chia xa, cảm xúc, giai điệu dễ ngấm.",
+        tracks: [
+          // Bạn có thể dán tên bài thật vào đây (mỗi dòng 1 track)
+          // "Track 1",
+          // "Track 2",
+        ],
+        links: [
+          {
+            label: "Nghe trên SoundCloud",
+            url: "https://soundcloud.com/minh-hi-u-nguy-n-272495166/sets/ep-r-i-xa-em"
+          }
+        ],
+        // Nhúng player SoundCloud cho set này
+        soundcloudSetUrl: "https://soundcloud.com/minh-hi-u-nguy-n-272495166/sets/ep-r-i-xa-em",
+        coverColor: "purple"
+      },
+
+      // Album/EP mẫu (bạn thay nội dung thật)
+      {
+        title: "Dark & Light",
+        type: "EP",
+        year: "2026",
+        mood: ["Ballad", "Pop"],
+        tags: ["emotional", "contrast", "melodic"],
+        desc: "EP cảm xúc với 2 mảng đối lập: tối và sáng, tập trung vào giai điệu và không khí.",
+        tracks: ["Track 1", "Track 2", "Track 3", "Track 4"],
+        links: [{ label: "Link nghe", url: "#" }],
+        coverColor: "blue"
+      },
+      {
+        title: "EP9",
+        type: "Album",
+        year: "2025",
+        mood: ["EDM", "Pop"],
+        tags: ["energetic", "club", "hooky"],
+        desc: "Album/collection nhịp nhanh, hook rõ, hướng tới vibe biểu diễn và remix.",
+        tracks: ["Track 1", "Track 2", "Track 3"],
+        links: [{ label: "Link nghe", url: "#" }],
+        coverColor: "gold"
+      }
+    ];
+    // =======================
+    // HẾT PHẦN DỮ LIỆU
+    // =======================
+
+    const $grid = document.getElementById("grid");
+    const $q = document.getElementById("q");
+    const $filters = document.getElementById("filters");
+    const $bd = document.getElementById("backdrop");
+
+    const $mTitle = document.getElementById("mTitle");
+    const $mSub = document.getElementById("mSub");
+    const $mDesc = document.getElementById("mDesc");
+    const $mTracks = document.getElementById("mTracks");
+    const $mTracksWrap = document.getElementById("mTracksWrap");
+    const $mLinks = document.getElementById("mLinks");
+    const $mBadges = document.getElementById("mBadges");
+
+    const $mPlayerWrap = document.getElementById("mPlayerWrap");
+    const $mPlayer = document.getElementById("mPlayer");
+
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const uniq = (arr) => [...new Set(arr)];
+    const norm = (s) => (s || "").toString().toLowerCase().trim();
+
+    const ALL_FILTERS = ["All"].concat(
+      uniq(ALBUMS.flatMap(a => (a.mood || [])).map(x => x.trim()))
+        .filter(Boolean)
+        .sort((a,b)=>a.localeCompare(b))
+    );
+
+    let activeFilter = "All";
+
+    function renderFilters(){
+      $filters.innerHTML = "";
+      ALL_FILTERS.forEach(f => {
+        const el = document.createElement("div");
+        el.className = "pill" + (f === activeFilter ? " active" : "");
+        el.textContent = f;
+        el.onclick = () => { activeFilter = f; render(); renderFilters(); };
+        $filters.appendChild(el);
+      });
+    }
+
+    function albumMatches(a){
+      const q = norm($q.value);
+      const blob = [
+        a.title, a.type, a.year,
+        ...(a.mood || []),
+        ...(a.tags || []),
+        a.desc
+      ].join(" ");
+      const okQuery = !q || norm(blob).includes(q);
+      const okFilter = activeFilter === "All" || (a.mood || []).includes(activeFilter);
+      return okQuery && okFilter;
+    }
+
+    function coverStyle(color){
+      const map = {
+        purple: "radial-gradient(520px 240px at 20% 20%, rgba(124,58,237,.55), transparent 60%), radial-gradient(520px 240px at 85% 30%, rgba(56,189,248,.35), transparent 60%), rgba(255,255,255,.04)",
+        blue:   "radial-gradient(520px 240px at 20% 20%, rgba(56,189,248,.55), transparent 60%), radial-gradient(520px 240px at 85% 30%, rgba(34,197,94,.25), transparent 60%), rgba(255,255,255,.04)",
+        green:  "radial-gradient(520px 240px at 20% 20%, rgba(34,197,94,.50), transparent 60%), radial-gradient(520px 240px at 85% 30%, rgba(124,58,237,.25), transparent 60%), rgba(255,255,255,.04)",
+        gold:   "radial-gradient(520px 240px at 20% 20%, rgba(245,158,11,.55), transparent 60%), radial-gradient(520px 240px at 85% 30%, rgba(56,189,248,.25), transparent 60%), rgba(255,255,255,.04)",
+      };
+      return map[color] || map.purple;
+    }
+
+    function card(a){
+      const el = document.createElement("div");
+      el.className = "album";
+      el.onclick = () => openModal(a);
+
+      const moods = (a.mood || []).slice(0,3);
+      const tags = (a.tags || []).slice(0,3);
+
+      el.innerHTML = `
+        <div class="cover" style="background:${coverStyle(a.coverColor)}">
+          <div class="label">🎵 ${escapeHtml(a.type || "Release")}</div>
+          <div class="year">${escapeHtml(a.year || "")}</div>
+        </div>
+        <div class="body">
+          <h3 class="title">${escapeHtml(a.title)}</h3>
+          <p class="desc">${escapeHtml(a.desc || "")}</p>
+          <div class="tags">
+            ${moods.map(m=>`<span class="tag">${escapeHtml(m)}</span>`).join("")}
+            ${tags.map(t=>`<span class="tag">#${escapeHtml(t)}</span>`).join("")}
+          </div>
+        </div>
+        <div class="meta">
+          <div>${(a.tracks?.length || 0)} tracks</div>
+          <div class="ctaMini">Xem chi tiết →</div>
+        </div>
+      `;
+      return el;
+    }
+
+    function render(){
+      $grid.innerHTML = "";
+      const list = ALBUMS.filter(albumMatches);
+
+      if(list.length === 0){
+        const empty = document.createElement("div");
+        empty.style.padding = "18px";
+        empty.style.border = "1px solid var(--line)";
+        empty.style.background = "rgba(255,255,255,.05)";
+        empty.style.borderRadius = "18px";
+        empty.style.gridColumn = "1 / -1";
+        empty.innerHTML = `
+          <div style="font-weight:900;margin-bottom:6px">Không tìm thấy album</div>
+          <div style="color:var(--muted);font-size:13px">Thử từ khoá khác hoặc chọn filter “All”.</div>
+        `;
+        $grid.appendChild(empty);
+        return;
+      }
+
+      list.forEach(a => $grid.appendChild(card(a)));
+    }
+
+    function openModal(a){
+      $mTitle.textContent = a.title || "—";
+      $mSub.textContent = `${a.type || "Release"} • ${a.year || ""} • ${(a.mood || []).join(" / ") || "—"}`;
+      $mDesc.textContent = a.desc || "—";
+
+      // Badges
+      $mBadges.innerHTML = "";
+      const mkBadge = (txt) => {
+        const b = document.createElement("span");
+        b.className = "pill2";
+        b.textContent = txt;
+        return b;
+      };
+      $mBadges.appendChild(mkBadge(`🎵 ${a.type || "Release"}`));
+      $mBadges.appendChild(mkBadge(`📅 ${a.year || "—"}`));
+      (a.mood || []).slice(0,3).forEach(m => $mBadges.appendChild(mkBadge(`✨ ${m}`)));
+
+      // Links
+      $mLinks.innerHTML = "";
+      (a.links || []).filter(x => x.url && x.url !== "#").forEach(l=>{
+        const btn = document.createElement("a");
+        btn.className = "btn primary";
+        btn.href = l.url;
+        btn.target = "_blank";
+        btn.rel = "noreferrer";
+        btn.textContent = l.label || "Open";
+        $mLinks.appendChild(btn);
+      });
+      const mail = document.createElement("a");
+      mail.className = "btn";
+      mail.href = "mailto:hieumanucianvbhp2003@gmail.com";
+      mail.textContent = "Liên hệ";
+      $mLinks.appendChild(mail);
+
+      // Tracklist
+      $mTracks.innerHTML = "";
+      const tracks = a.tracks || [];
+      if(tracks.length === 0){
+        $mTracksWrap.style.display = "none";
+      } else {
+        $mTracksWrap.style.display = "block";
+        tracks.forEach(t=>{
+          const li = document.createElement("li");
+          li.textContent = t;
+          $mTracks.appendChild(li);
+        });
+      }
+
+      // SoundCloud Player (optional)
+      $mPlayer.innerHTML = "";
+      if (a.soundcloudSetUrl) {
+        $mPlayerWrap.style.display = "block";
+        const src =
+          "https://w.soundcloud.com/player/?" +
+          "url=" + encodeURIComponent(a.soundcloudSetUrl) +
+          "&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true";
+        $mPlayer.innerHTML = `
+          <iframe
+            width="100%"
+            height="300"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src="${src}">
+          </iframe>
+        `;
+      } else {
+        $mPlayerWrap.style.display = "none";
+      }
+
+      $bd.classList.add("show");
+      $bd.setAttribute("aria-hidden","false");
+    }
+
+    function closeModal(){
+      $bd.classList.remove("show");
+      $bd.setAttribute("aria-hidden","true");
+    }
+
+    document.getElementById("close").onclick = closeModal;
+    $bd.addEventListener("click", (e)=>{ if(e.target === $bd) closeModal(); });
+    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
+
+    $q.addEventListener("input", render);
+
+    function escapeHtml(str){
+      return (str ?? "").toString()
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    renderFilters();
+    render();
   </script>
 </body>
 </html>
